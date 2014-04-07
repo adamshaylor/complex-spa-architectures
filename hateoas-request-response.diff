@@ -1,0 +1,47 @@
+diff --git a/hateoas-request.json b/hateoas-response.json
+index 1208e6c..bf73d3a 100644
+--- a/hateoas-request.json
++++ b/hateoas-response.json
+@@ -21,36 +21,23 @@
+   },
+   "shirt": {
+     "type": "dropdown",
+-    "value": 2,
++    "value": null,
+     "prompt": "Select Shirt",
+     "options": [
+       {
+-        "name": "Hanes Tagless",
+-        "value": 1
++        "name": "LAT Women’s",
++        "value": 4
+       },
+       {
+         "name": "Canvas Ringspun",
+-        "value": 2
+-      },
+-      {
+-        "name": "American Apparel",
+-        "value": 3
++        "value": 5
+       }
+     ]
+   },
+   "color": {
+     "type": "dropdown",
+-    "value": 81,
++    "value": null,
+     "prompt": "Select Color",
+-    "options": [
+-      {
+-        "name": "Maroon",
+-        "value": 81
+-      },
+-      {
+-        "name": "Orange",
+-        "value": 98
+-      }
+-    ]
++    "options": []
+   }
+ }

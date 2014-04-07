@@ -1,0 +1,2 @@
+# hateoas
+### a Sails application

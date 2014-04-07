@@ -1,0 +1,39 @@
+doctype html
+html(ng-app='isomorphicApp')
+	head
+		title= title
+		script(src='//code.jquery.com/jquery-2.1.0.js')
+		script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.js')
+		script(src='//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js')
+		script(src='/javascripts/shirts-module.js')
+		script(src='/javascripts/angular-module.js')
+		link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css')
+		link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css')
+	body(ng-controller='IsomorphicCtrl')
+		div.btn-group
+			button(type='button').btn.btn-default.dropdown-toggle(data-toggle='dropdown')
+				{{state.selectedCategory.name || 'Select Category'}}
+				&nbsp;
+				span.caret
+			ul.dropdown-menu(role='menu')
+				li(ng-repeat='category in state.availableCategories')(ng-click='setCategory(category)')
+					a(href='')
+						{{category.name}}
+		div.btn-group
+			button(type='button').btn.btn-default.dropdown-toggle(data-toggle='dropdown')
+				{{state.selectedShirt.name || 'Select Shirt'}}
+				&nbsp;
+				span.caret
+			ul.dropdown-menu(role='menu')
+				li(ng-repeat='shirt in state.availableShirts')(ng-click='setShirt(shirt)')
+					a(href='')
+						{{shirt.name}}
+		div.btn-group
+			button(type='button').btn.btn-default.dropdown-toggle(data-toggle='dropdown')
+				{{state.selectedColor.name || 'Select Color'}}
+				&nbsp;
+				span.caret
+			ul.dropdown-menu(role='menu')
+				li(ng-repeat='color in state.availableColors')(ng-click='setColor(color)')
+					a(href='')
+						{{color.name}}

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" ng-app="hateoasApp">
+<head>
+
+	<meta charset="UTF-8">
+	<title>HATEOAS demo</title>
+
+	<script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
+	<script src="//code.jquery.com/jquery-2.1.0.js"></script>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.js"></script>
+
+	<script src="/js/angular/module.js"></script>
+	<script src="/js/angular/hateoas-ui-control.js"></script>
+	<script src="/js/angular/hateoas-ctrl.js"></script>
+	<script src="/js/angular/crud-ctrl.js"></script>
+
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+
+	<style>
+
+		#shirts, #shirt {
+			width: 400px;
+			margin: 20px auto 20px auto;
+		}
+
+		#shirt > div {
+			display: inline;
+		}
+
+		#shirt .btn-group {
+			vertical-align: top;
+		}
+
+	</style>
+
+</head>
+<body>
+
+	<div id="shirts" ng-controller="CrudCtrl" style="margin: auto;">
+		<p>
+			<div class="btn-group">
+				<button ng-repeat="shirtState in shirtStates" type="button" class="btn btn-default" ng-class="{active: shirtState.id === $root.selectedShirtState.id}" ng-click="$root.selectedShirtState = shirtState">{{shirtState.id}}</button>
+			</div>
+		</p>
+		<p>
+			<button type="button" class="btn btn-default" ng-click="create()">+</button>
+			<button type="button" class="btn btn-default" ng-click="destroy($root.selectedShirtState)">-</button>
+		</p>
+	</div>
+
+	<div id="shirt" ng-controller="HateoasCtrl">
+		<div hateoas-ui-control="$root.selectedShirtState.category" style-with="selected"></div>
+		<div hateoas-ui-control="$root.selectedShirtState.shirt" style-with="selected"></div>
+		<div hateoas-ui-control="$root.selectedShirtState.color" style-with="selected"></div>
+	</div>
+
+</body>
+</html>

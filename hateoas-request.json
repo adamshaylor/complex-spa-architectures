@@ -1,0 +1,56 @@
+{
+  "id": 1,
+  "category": {
+    "type": "radio",
+    "value": 2,
+    "prompt": "Select Category",
+    "options": [
+      {
+        "name": "Basic",
+        "value": 1
+      },
+      {
+        "name": "V-Neck",
+        "value": 2
+      },
+      {
+        "name": "Women’s",
+        "value": 3
+      }
+    ]
+  },
+  "shirt": {
+    "type": "dropdown",
+    "value": 2,
+    "prompt": "Select Shirt",
+    "options": [
+      {
+        "name": "Hanes Tagless",
+        "value": 1
+      },
+      {
+        "name": "Canvas Ringspun",
+        "value": 2
+      },
+      {
+        "name": "American Apparel",
+        "value": 3
+      }
+    ]
+  },
+  "color": {
+    "type": "dropdown",
+    "value": 81,
+    "prompt": "Select Color",
+    "options": [
+      {
+        "name": "Maroon",
+        "value": 81
+      },
+      {
+        "name": "Orange",
+        "value": 98
+      }
+    ]
+  }
+}
