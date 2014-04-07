@@ -44,7 +44,7 @@ From the repo root, run:
 
 ```shell
 cd hateoas
-sails lift
+node app.js
 ```
 
 The demo should be running at [http://localhost:1337](http://localhost:1337).
