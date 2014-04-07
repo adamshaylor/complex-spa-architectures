@@ -2,7 +2,7 @@
 
 ##Introduction
 
-Complex single page applications tend to have overlap between browser and server code. Though the data may reside in a database, its schema and much of the logic is often duplicated. As of this writing, there is no widely accepted solution to this problem. Some who tried [suggest you run in the opposite direction](http://mir.aculo.us/2013/02/26/client-side-mvc-is-not-a-silver-bullet/).
+Complex single page applications tend to have overlap between browser and server code. Though the data may reside in a database, the schema and much of the logic is often duplicated. As of this writing, there is no widely accepted solution to this problem. Some who tried [suggest you run in the opposite direction](http://mir.aculo.us/2013/02/26/client-side-mvc-is-not-a-silver-bullet/).
 
 This is a brief exploration of two techniques that might “re-couple” the back and front ends: Roy Fielding’s [Hypermedia As The Application of Engine State](http://en.wikipedia.org/wiki/HATEOAS) (HATEOAS) and Airbnb’s [Isomorphic JavaScript](http://nerds.airbnb.com/isomorphic-javascript-future-web-apps/).
 
@@ -10,16 +10,11 @@ Both demos attempt to model a t-shirt customization app and both use the same da
 
 ![](screenshot.png?raw=true)
 
-**Note**: I’ve taken liberties with the term “HATEOAS.” I’m not trying to create an API that documents its own affordances. That may be relevant to public APIs but it isn’t germane to many apps whose APIs are unlikely to ever be used publicly. Instead, I’m taking the term “application state” literally and modeling the user interface controls in the hypermedia. This demo of HATEOAS may indirectly define its affordances in the context of single page applications, but it does not adhere to any standard (e.g. [JSON API](https://github.com/json-api/json-api)).
-
 ##Installation
 
-Install [Node](http://nodejs.org) and download this repo. You’ll also need an Internet connection to start the demos since the browser libraries are being served by CDNs.
+Install [Node](http://nodejs.org) and download this repo. You’ll also need an Internet connection to start the demos.
 
 That’s it.
-
-I didn’t bother stripping out the `node_modules` directories. That saves you from running `npm install` and me from writing a `.gitignore`.
-
 
 ##Starting the isomorphism demo
 
@@ -51,11 +46,11 @@ The demo should be running at [http://localhost:1337](http://localhost:1337).
 
 ##How the HATEOAS demo works
 
-Instead of modeling data, the API models the user interface controls. The client is dumb about the meaning of those controls and the logic behind them. When the user changes them, the client sends them to the server. Assuming the server uses an MVC architecture, the controllers are responsible for translating the controls into models and responding to the client with new controls reflecting the consequences of the user’s change.
+I’ve taken liberties with the term “HATEOAS.” I’m not trying to create an API that documents its own affordances. Instead, I’m taking the term “application state” literally and modeling the user interface controls in the hypermedia. This demo of HATEOAS may indirectly define its affordances but it does not adhere to any standard such as [JSON API](https://github.com/json-api/json-api).
 
-In the t-shirt example, say the user selects a category, shirt and color. Then they change their mind and pick a different category. The shirt and color drop-downs need to be updated, but with HATEOAS, that is the server’s responsibility alone.
+The benefit of modeling the user interface controls is that the client can be ignorant of the meaning of those controls and the logic behind them. When the user changes the controls, the client sends the state of those controls to the server. The server is responsible for translating the state data into models and responding to the client with an updated state reflecting the consequences of the user’s change.
 
-Here's a diff between the request and response for this example. The client sends the change to the category and the server responds with the updated shirts and colors. It also nulls out the previous selections since they are no longer available:
+Take this t-shirt demo for example. Select select a category, shirt and color. Now go back to the cateogory menu and pick a different category. Just like in the isomorphic demo, the shirt and color menus are updated, but with HATEOAS, the update is the server’s responsibility alone. Here's the diff between the client request and server response:
 
 ```diff
 diff --git a/hateoas-request.json b/hateoas-response.json
@@ -106,6 +101,8 @@ index 1208e6c..bf73d3a 100644
    }
  }
 ```
+
+The client sends the change to the category and the server responds with the updated shirts and colors. It also nulls out the previous selections since they are no longer available.
 
 The client is written in such a way that all the controls are temporarily disabled while this HTTP transaction takes place. For more complex applications, it might make more sense to model the dependency tree in the JSON so the client can be more selective about which controls to disable.
 
