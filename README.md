@@ -46,11 +46,11 @@ The demo should be running at [http://localhost:1337](http://localhost:1337).
 
 ##How the HATEOAS demo works
 
-I’ve taken liberties with the term “HATEOAS.” I’m not trying to create an API that documents its own affordances. Instead, I’m taking the term “application state” literally and modeling the user interface controls in the hypermedia. This demo of HATEOAS may indirectly define its affordances but it does not adhere to any standard such as [JSON API](https://github.com/json-api/json-api).
+I’ve taken liberties with the term “HATEOAS.” I’m not trying to create an API that documents its own affordances. Instead, I’m taking the term “application state” literally and modeling the user interface controls in the hypermedia. The API may imply its affordances indirectly but it does not adhere to any standard such as [JSON API](https://github.com/json-api/json-api).
 
-The benefit of modeling the user interface controls is that the client can be ignorant of the meaning of those controls and the logic behind them. When the user changes the controls, the client sends the state of those controls to the server. The server is responsible for translating the state data into models and responding to the client with an updated state reflecting the consequences of the user’s change.
+The benefit of building an API this way is that the client can be ignorant of the meaning of its data and the logic behind it. When the user changes the controls, the client sends the state of those controls to the server. The server is responsible for translating the state data into models and responding to the client with a new state reflecting the consequences of the user’s change.
 
-Take this t-shirt demo for example. Select select a category, shirt and color. Now go back to the cateogory menu and pick a different category. Just like in the isomorphic demo, the shirt and color menus are updated, but with HATEOAS, the update is the server’s responsibility alone. Here's the diff between the client request and server response:
+Take this t-shirt demo for example. Start by selecting a category, shirt and color. Now go back to the cateogory menu and pick a different category. Just like in the isomorphic demo, the shirt and color menus are updated, but with HATEOAS, the update is the server’s responsibility alone. Here's the diff between the client request and server response:
 
 ```diff
 diff --git a/hateoas-request.json b/hateoas-response.json
@@ -104,7 +104,7 @@ index 1208e6c..bf73d3a 100644
 
 The client sends the change to the category and the server responds with the updated shirts and colors. It also nulls out the previous selections since they are no longer available.
 
-The client is written in such a way that all the controls are temporarily disabled while this HTTP transaction takes place. For more complex applications, it might make more sense to model the dependency tree in the JSON so the client can be more selective about which controls to disable.
+The client is written in such a way that all the controls are temporarily disabled while this HTTP transaction takes place. For more complex applications, it might make more sense to model the dependency tree in the API so the client can be more selective about which controls to disable.
 
 ##Conclusions
 
