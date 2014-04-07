@@ -6,9 +6,9 @@ Complex single page applications tend to have overlap between browser and server
 
 This is a brief exploration of two techniques that might “re-couple” the back and front ends: Roy Fielding’s [Hypermedia As The Application of Engine State](http://en.wikipedia.org/wiki/HATEOAS) (HATEOAS) and Airbnb’s [Isomorphic JavaScript](http://nerds.airbnb.com/isomorphic-javascript-future-web-apps/).
 
-![](screenshot.png?raw=true)
-
 Both demos attempt to model a t-shirt customization app and both use the same data from the JSON files in `/example-data`. I’m using Angular as the front-end framework as a matter of personal preference. Both demos could just as easily be done with another framework or even vanilla JavaScript.
+
+![](screenshot.png?raw=true)
 
 **Note**: I’ve taken liberties with the term “HATEOAS.” I’m not trying to create an API that documents its own affordances. That may be relevant to public APIs but it isn’t germane to many apps whose APIs are unlikely to ever be used publicly. Instead, I’m taking the term “application state” literally and modeling the user interface controls in the hypermedia. This demo of HATEOAS may indirectly define its affordances in the context of single page applications, but it does not adhere to any standard (e.g. [JSON API](https://github.com/json-api/json-api)).
 
