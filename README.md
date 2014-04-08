@@ -29,9 +29,21 @@ The demo should be running at [http://localhost:3000](http://localhost:3000).
 
 ##How the isomorphic demo works
 
-Isomorphic JavaScript is another way of saying, “write your server in JavaScript and share your code with the browser.” The trick is structuring the logic and data you intend to share in such a way that it can be easily bundled up. In this case, I used [Browserify](http://browserify.org) to bundle `/isomorphism/shared-modules/shirts.js` and its dependencies (i.e. the data) into `/isomorphism/public/javascripts/shirts-module.js`. The resultant client script exposes an object called `shirts` in the browser global scope. 
+Isomorphic JavaScript is another way of saying, “write your server in JavaScript and share your code with the browser.” The trick is structuring the logic and data you intend to share in such a way that it can be easily bundled up. In this case, I used [Browserify](http://browserify.org) to bundle a Node file and its dependencies (i.e. the data) into a self-contained browser script. The resultant client script exposes an object called `shirts` in the browser global scope. 
 
 You can access various API endpoints such as [http://localhost:3000/categories](http://localhost:3000/categories). These routes are wired up to the same methods and data the browser uses. They could also be used to validate data passed from the browser to a REST API.
+
+##Key isomorphism files
+
+Shared logic:
+
+* [isomorphism/shared-modules/shirts.js](isomorphism/shared-modules/shirts.js)
+
+API routes:
+
+* [isomorphism/routes/categories.js](isomorphism/routes/categories.js)
+* [isomorphism/routes/shirts.js](isomorphism/routes/shirts.js)
+* [isomorphism/routes/colors.js](isomorphism/routes/colors.js)
 
 ##Starting the HATEOAS demo
 
@@ -105,6 +117,21 @@ index 1208e6c..bf73d3a 100644
 The client sends the change to the category and the server responds with the updated shirts and colors. It also nulls out the previous selections since they are no longer available.
 
 The client is written in such a way that all the controls are temporarily disabled while this HTTP transaction takes place. For more complex applications, it might make more sense to model the dependency tree in the API so the client can be more selective about which controls to disable.
+
+## Key HATEOAS files
+
+Server controller and model:
+
+* [hateoas/api/controllers/ShirtStateController.js](hateoas/api/controllers/ShirtStateController.js)
+* [hateoas/api/models/ShirtState.js](hateoas/api/models/ShirtState.js)
+
+Angular user interface controls and XHR
+
+* [hateoas/views/layout.ejs](hateoas/views/layout.ejs)
+* [hateoas/assets/js/angular/hateoas-ctrl.js](hateoas/assets/js/angular/hateoas-ctrl.js) (refreshingly empty controller)
+* [hateoas/assets/js/angular/hateoas-ui-control.html](hateoas/assets/js/angular/hateoas-ui-control.html)
+* [hateoas/assets/js/angular/hateoas-ui-control.js](hateoas/assets/js/angular/hateoas-ui-control.js)
+* [hateoas/assets/js/angular/crud-ctrl.js](hateoas/assets/js/angular/crud-ctrl.js)
 
 ##Conclusions
 
