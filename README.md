@@ -14,12 +14,28 @@ Both demos attempt to model a t-shirt customization app and both use the same da
 
 ##Installation
 
+###Install Node
+
 Install [Node](http://nodejs.org) and download this repo. You’ll also need an Internet connection to start the demos since the browser libraries are being served by CDNs.
 
-That’s it.
+###Install Browserify
 
-I didn’t bother stripping out the `node_modules` directories. That saves you from running `npm install` and me from writing a `.gitignore`.
+```shell
+npm install -g browserify
+```
 
+You may need to run this as a super user on Mac and Linux:
+
+```shell
+sudo npm install -g browserify
+```
+
+###Install Node dependencies
+
+```shell
+npm install hateoas/
+npm install isomorphism/
+```
 
 ##Starting the isomorphism demo
 
