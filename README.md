@@ -34,6 +34,8 @@ sudo npm install -g browserify
 
 ###Dependencies
 
+From the repo root, run:
+
 ```shell
 npm install hateoas/
 npm install isomorphism/
