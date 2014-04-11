@@ -37,8 +37,10 @@ sudo npm install -g browserify
 From the repo root, run:
 
 ```shell
-npm install hateoas/
-npm install isomorphism/
+cd hateoas
+npm install
+cd ../isomorphism
+npm install
 ```
 
 ##Starting the isomorphism demo
