@@ -2,7 +2,7 @@
 
 ##Introduction
 
-Complex single page applications tend to have overlap between browser and server code. Though the data may reside in a database, the schema and much of the logic is often duplicated. As of this writing, there is no widely accepted solution to this problem. Some who tried [suggest you run in the opposite direction](http://mir.aculo.us/2013/02/26/client-side-mvc-is-not-a-silver-bullet/).
+Complex single page applications tend to have overlap between browser and server code. Though the data may reside in a database, the schema and much of the logic is often duplicated. As of this writing, there is no widely accepted solution to this problem. Some who tried will tell you to [give up](http://mir.aculo.us/2013/02/26/client-side-mvc-is-not-a-silver-bullet/).
 
 This is a brief exploration of two techniques that might “re-couple” the back and front ends: Roy Fielding’s [Hypermedia As The Application of Engine State](http://en.wikipedia.org/wiki/HATEOAS) (HATEOAS) and Airbnb’s [Isomorphic JavaScript](http://nerds.airbnb.com/isomorphic-javascript-future-web-apps/).
 
@@ -18,18 +18,20 @@ The binary for Node is on [their website](http://nodejs.org). Then you’ll need
 
 **Note:** You’ll need an Internet connection to start the demos.
 
-###Browserify
+###Browserify & Sails.js
 
-You’ll need to install Browserify globally:
+You’ll need to install Browserify and Sails.js globally:
 
 ```shell
 npm install -g browserify
+npm install -g sails
 ```
 
 If you’re on Mac or Linux, you may need to do this as a super user:
 
 ```shell
 sudo npm install -g browserify
+sudo npm install -g sails
 ```
 
 ###Dependencies
@@ -160,14 +162,6 @@ Angular user interface controls and XHR
 * [hateoas/assets/js/angular/hateoas-ui-control.js](hateoas/assets/js/angular/hateoas-ui-control.js)
 * [hateoas/assets/js/angular/crud-ctrl.js](hateoas/assets/js/angular/crud-ctrl.js)
 
-##Conclusions
+##Presentation slides
 
-&nbsp; | HATEOAS | Isomorphism
------: | ------- | -----------
-**API** | Stateful (which is neither by definition REST nor HATEOAS). Potential state conflicts and concurrency problems. Would web sockets be a better medium? | Stateless. No longer burdened with representing logic, just storing and validating data.
-**Network & front-end performance** | Fast initial load but heavy on subsequent XHRs. The UI dies on the first network timeout. | Slow initial load but very little network chatter.
-**Complexity** | ...is in defining how to model the controls and maintaining that definition over multiple projects. Use basic HTML instead of JSON? | ...is in figuring how how to modularize the shared logic and data.
-**Flexibility** | Any front-end framework, any back-end capable of transforming data into controls and back. | Flexible on the front-end. Married to Node on the back.
-**Modularity / re-use** | Once the contract is defined, UI widgets can be re-used as Angular directives or web components across projects. | Every isomorphic module is custom. Mark-up would presumably be copy/pasted from CSS framework documentation as usual.
-
-At some point I may try modeling user controls over web sockets, at which point I may drop the term “HATEOAS” entirely.
+Open [index.html](index.html) in your browser.

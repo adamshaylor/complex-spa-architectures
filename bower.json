@@ -1,0 +1,29 @@
+{
+  "name": "complex-spa-architectures",
+  "version": "1.0.0",
+  "homepage": "https://github.com/adamshaylor/complex-spa-architectures",
+  "authors": [
+    "Adam Shaylor <business@adamshaylor.com>"
+  ],
+  "main": "index.html",
+  "keywords": [
+    "hateoas",
+    "isomorphic",
+    "javascript",
+    "spa",
+    "architecture",
+    "demo",
+    "presentation"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "reveal.js": "~2.6.2"
+  }
+}

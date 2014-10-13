@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Complex SPA architectures</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Adam Shaylor">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="bower_components/reveal.js/css/reveal.css">
+		<link rel="stylesheet" href="bower_components/reveal.js/css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="bower_components/reveal.js/lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="bower_components/reveal.js/lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+		<style>
+
+			h2, h3, h4 {
+				text-transform: none !important;
+			}
+
+		</style>
+
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+				
+				<section>
+					<h2>Problem</h2>
+					<p>We are duplicating our efforts in two languages</p>
+				</section>
+
+				<section>
+					<h2>Criteria for Solution</h2>
+				</section>
+
+				<section>
+					<h3>Criterium 1: Can model hierarchical relationships</h3>
+					<h4>A ⇒ B ⇒ C</h4>
+				</section>
+
+				<section>
+					<h3>Criterium 2: Can model multiple many-to-many relationships</h3>
+					<h4>A ⇔ B ⇔ C</h4>
+				</section>
+
+				<section>
+					<h3>Criterium 3: Can make exceptions</h3>
+					<h4>E.g. Disallow specific combinations of selections</h4>
+				</section>
+
+				<section>
+					<h3>Criterium 4: Can message the user about state:</h3>
+					<ul>
+						<li>Missing selections</li>
+						<li>Price data</li>
+						<li>Changes made by the software on the user’s behalf</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>“Generals always fight the last war, especially if they have won it.”</h2>
+					<img src="http://static.guim.co.uk/sys-images/Observer/Pix/pictures/2009/9/4/1252077769634/Hitler-in-Paris-001.jpg" alt="German invasion of Paris">
+				</section>
+
+				<section>
+					<h2>T-Shirt Example</h2>
+					<ol>
+						<li>Category</li>
+						<li>Line</li>
+						<li>Color</li>
+					</ol>
+				</section>
+
+				<section>
+					<h2>T-Shirt Example</h2>
+					<ol>
+						<li><em>Does</em> have hierarchical relationships</li>
+						<li><em>Does</em> have a complete vs incomplete definition</li>
+						<li><em>Doesn’t</em> require a solution to any of the other criteria</li>
+					</ol>
+				</section>
+
+				<section>
+					<h2>T-Shirt Data</h2>
+				</section>
+
+				<section>
+					<h2>Solutions</h2>
+				</section>
+
+				<section>
+					<h2>Solution 1: HATEOAS</h2>
+					<h3>Hypermedia as the Engine of Application State</h3>
+					<img style="height: 100px" src="http://cdn1.sciencefiction.com/wp-content/uploads/2014/08/PalpatineEvil.jpg" alt="Emperor Palpatine">
+					<span style="font-size: 42px; position: relative; bottom: 50px;"> + </span>
+					<img style="height: 100px" src="http://blogs.mydevstaging.com/blogs/cooking/files/2011/12/Cheerios120111.jpg" alt="Cheerios">
+					<p>An existing constraint of REST that I perverted into something else</p>
+				</section>
+
+				<section>
+					<h2>Solution 2: Isomorphic JavaScript</h2>
+					<p>100% JavaScript shared between server and client</p>
+				</section>
+
+				<section>
+					<h2>Others that I’m too lazy to try</h2>
+				</section>
+
+				<section>
+					<h2>Solution 3: Data Dump</h2>
+					<img src="http://aiminglow.com/wp-content/uploads/2012/08/Dog-sniffing-another-dog-pooping.jpg">
+					<p>Only meets two out of the four criteria</p>
+				</section>
+
+				<section>
+					<h2>Solution 4: Constraint Solver</h2>
+					<p>Like CSS except for business logic</p>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="bower_components/reveal.js/lib/js/head.min.js"></script>
+		<script src="bower_components/reveal.js/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'bower_components/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'bower_components/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'bower_components/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'bower_components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'bower_components/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'bower_components/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

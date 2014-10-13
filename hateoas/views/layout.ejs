@@ -1,60 +1,118 @@
-<!doctype html>
-<html lang="en" ng-app="hateoasApp">
-<head>
+<!DOCTYPE html>
+<html ng-app="hateoasApp">
+  <head>
+    <title>HATEOAS demo</title>
 
-	<meta charset="UTF-8">
-	<title>HATEOAS demo</title>
+    <!-- Viewport mobile tag for sensible mobile support -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-	<script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
-	<script src="//code.jquery.com/jquery-2.1.0.js"></script>
-	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.js"></script>
+    
+    <!--  
+        Stylesheets and Preprocessors
+        ==============================
 
-	<script src="/js/angular/module.js"></script>
-	<script src="/js/angular/hateoas-ui-control.js"></script>
-	<script src="/js/angular/hateoas-ctrl.js"></script>
-	<script src="/js/angular/crud-ctrl.js"></script>
+        You can always bring in CSS files manually with `<link>` tags, or asynchronously
+        using a solution like AMD (RequireJS).  Or, if you like, you can take advantage 
+        of Sails' conventional asset pipeline (boilerplate Gruntfile).
 
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+        By default, stylesheets from your `assets/styles` folder are included
+        here automatically (between STYLES and STYLES END). Both CSS (.css) and LESS (.less)
+        are supported. In production, your styles will be minified and concatenated into
+        a single file.
+        
+        To customize any part of the built-in behavior, just edit `tasks/pipeline.js`.
+        For example, here are a few things you could do:
+            
+            + Change the order of your CSS files
+            + Import stylesheets from other directories
+            + Use a different or additional preprocessor, like SASS, SCSS or Stylus
+    -->
 
-	<style>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
+    <script src="//code.jquery.com/jquery-2.1.0.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.js"></script>
+    <script src="/js/angular/module.js"></script>
+    <script src="/js/angular/crud-ctrl.js"></script>
+    <script src="/js/angular/hateoas-ctrl.js"></script>
+    <script src="/js/angular/hateoas-ui-control.js"></script>
 
-		#shirts, #shirt {
-			width: 400px;
-			margin: 20px auto 20px auto;
-		}
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 
-		#shirt > div {
-			display: inline;
-		}
+    <style>
 
-		#shirt .btn-group {
-			vertical-align: top;
-		}
+      #shirts, #shirt {
+        width: 400px;
+        margin: 20px auto 20px auto;
+      }
 
-	</style>
+      #shirt > div {
+        display: inline;
+      }
 
-</head>
-<body>
+      #shirt .btn-group {
+        vertical-align: top;
+      }
 
-	<div id="shirts" ng-controller="CrudCtrl" style="margin: auto;">
-		<p>
-			<div class="btn-group">
-				<button ng-repeat="shirtState in shirtStates" type="button" class="btn btn-default" ng-class="{active: shirtState.id === $root.selectedShirtState.id}" ng-click="$root.selectedShirtState = shirtState">{{shirtState.id}}</button>
-			</div>
-		</p>
-		<p>
-			<button type="button" class="btn btn-default" ng-click="create()">+</button>
-			<button type="button" class="btn btn-default" ng-click="destroy($root.selectedShirtState)">-</button>
-		</p>
-	</div>
+    </style>
 
-	<div id="shirt" ng-controller="HateoasCtrl">
-		<div hateoas-ui-control="$root.selectedShirtState.category" style-with="selected"></div>
-		<div hateoas-ui-control="$root.selectedShirtState.shirt" style-with="selected"></div>
-		<div hateoas-ui-control="$root.selectedShirtState.color" style-with="selected"></div>
-	</div>
+    <!--
 
-</body>
+      Client-side Javascript
+      ========================
+
+      You can always bring in JS files manually with `script` tags, or asynchronously
+      on the client using a solution like AMD (RequireJS).  Or, if you like, you can 
+      take advantage of Sails' conventional asset pipeline (boilerplate Gruntfile).
+
+      By default, files in your `assets/js` folder are included here
+      automatically (between SCRIPTS and SCRIPTS END).  Both JavaScript (.js) and
+      CoffeeScript (.coffee) are supported. In production, your scripts will be minified
+      and concatenated into a single file.
+      
+      To customize any part of the built-in behavior, just edit `tasks/pipeline.js`.
+      For example, here are a few things you could do:
+          
+          + Change the order of your scripts
+          + Import scripts from other directories
+          + Use a different preprocessor, like TypeScript
+
+    -->
+
+
+  </head>
+
+  <body>
+    <%- body %>
+
+
+
+    <!--
+        Client-side Templates
+        ========================
+
+        HTML templates are important prerequisites of modern, rich client applications.
+        To work their magic, frameworks like Backbone, Angular, Ember, and Knockout require
+        that you load these templates client-side.
+
+        By default, your Gruntfile is configured to automatically load and precompile
+        client-side JST templates in your `assets/templates` folder, then
+        include them here automatically (between TEMPLATES and TEMPLATES END).
+        
+        To customize this behavior to fit your needs, just edit `tasks/pipeline.js`.
+        For example, here are a few things you could do:
+
+            + Import templates from other directories
+            + Use a different template engine (handlebars, jade, dust, etc.)
+            + Internationalize your client-side templates using a server-side
+              stringfile before they're served.
+    -->
+
+    <!--TEMPLATES-->
+    
+    <!--TEMPLATES END-->
+
+
+  </body>
 </html>

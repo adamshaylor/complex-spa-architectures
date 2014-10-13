@@ -1,2 +1,10 @@
+# OS detritus
 .DS_Store
+
+# Build output
 node_modules
+bower_components
+isomorphism/public/javascripts/shirts-module.js
+
+# Node detritus
+npm-debug.log

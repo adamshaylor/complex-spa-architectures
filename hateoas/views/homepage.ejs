@@ -1,0 +1,17 @@
+<div id="shirts" ng-controller="CrudCtrl" style="margin: auto;">
+    <p>
+        <div class="btn-group">
+            <button ng-repeat="shirtState in shirtStates" type="button" class="btn btn-default" ng-class="{active: shirtState.id === $root.selectedShirtState.id}" ng-click="$root.selectedShirtState = shirtState">{{shirtState.id}}</button>
+        </div>
+    </p>
+    <p>
+        <button type="button" class="btn btn-default" ng-click="create()">+</button>
+        <button type="button" class="btn btn-default" ng-click="destroy($root.selectedShirtState)">-</button>
+    </p>
+</div>
+
+<div id="shirt" ng-controller="HateoasCtrl">
+    <div hateoas-ui-control="$root.selectedShirtState.category" style-with="selected"></div>
+    <div hateoas-ui-control="$root.selectedShirtState.shirt" style-with="selected"></div>
+    <div hateoas-ui-control="$root.selectedShirtState.color" style-with="selected"></div>
+</div>

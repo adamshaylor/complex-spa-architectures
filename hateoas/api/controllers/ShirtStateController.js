@@ -155,7 +155,7 @@ module.exports = {
 			categoryId: null,
 			shirtId: null,
 			colorId: null
-		}).done(function (err, shirtState) {
+		}).exec(function (err, shirtState) {
 
 			if (err) {
 				return res.send(err, 500);
